@@ -30,7 +30,7 @@ function createcommentsection (name, text, imgSrc) {
     const img = comment_template.querySelector('.img');
     if (heading && inside_text && img) {
         heading.textContent = name;
-        inside_text.textContent = text; // Corrected variable name
+        inside_text.textContent = text; 
         img.src = imgSrc;
     }
     
