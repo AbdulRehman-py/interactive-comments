@@ -102,8 +102,63 @@
     padding: 0;
     margin: 0;
     
+    
+    
     }
 
    
     
 }
+
+ @layer user-section-styling { 
+
+    .add-section {
+        display: flex;
+        padding: 1rem 1rem 1rem 1rem;
+        border: 1px solid var(--White);
+        background-color: var(--White);
+        margin-bottom: 2rem;
+        border-radius: 12px;
+        align-items: center;
+    }
+
+    
+
+    .text {
+       
+        background-color: transparent;
+        border: 1px solid var(--GrayishBlue);
+        outline: none;
+        width: 200%;
+        height: auto;
+        margin-left: 1rem;
+        font-size: var(--base-size);
+        padding: 2rem;
+        border-radius: 5px;
+        grid-column: 2/3;
+        
+    }
+
+   
+    .add-button {
+        background-color: var(--Moderateblue);
+        color: var(--White);
+        border: none;
+        outline: none;
+        border-radius: 7px;
+        padding: 0.8rem 1rem 0.8rem 1rem;
+        margin-left: auto;
+        font-size: var(--base-size);
+        font-family: var(--font-style);
+        
+    }
+
+   .button-reply {
+     color: var(--Moderateblue);
+   }
+
+
+}
+    
+
+   
