@@ -130,13 +130,13 @@
         background-color: transparent;
         border: 1px solid var(--GrayishBlue);
         outline: none;
-        width: 150%;
+        width: 180%;
         height: auto;
         margin-left: 1rem;
         font-size: var(--base-size);
         padding: 2rem;
         border-radius: 5px;
-        grid-column: 2/3;
+        
         
     }
 
