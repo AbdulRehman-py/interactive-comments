@@ -14,7 +14,7 @@
     --Palered: hsl(357, 100%, 86%);
 
 
-
+    --black: hsl(0, 0%, 0%);
     --Darkblue: hsl(212, 24%, 26%);
     --GrayishBlue: hsl(211, 10%, 45%);
     --Lightgray: hsl(223, 19%, 93%);
@@ -141,7 +141,7 @@
     }
 
    
-    .add-button {
+    .send {
         background-color: var(--Moderateblue);
         color: var(--White);
         border: none;
@@ -158,10 +158,70 @@
      color: var(--Moderateblue);
    }
 
+   #replay-id {
+       font-size: var(--base-size);
+       font-family: var(--font-style);
+       background-color: var(--White);
+        border: 1px solid var(--White);
+        border-radius: 12px;
+        margin: 1rem 0 1rem 0;
+        padding: 1rem 1rem 1.5rem 1rem;
+    
+   }
 
+    .heading-2 {
+        color: black;
+        font-size: var(--base-size);
+    }
+
+    .top-flex-name {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
    
+    .reply-img {
+        max-width: 100%;
+        width: 5%;
+        height: 50%;
+        border-radius: 70%;
+    }
 
+    .buttons {
+        display: flex;
+        margin-left: auto;
+        gap: 1rem;
+    }
 
+    .buttons > button {
+        background-color: transparent;
+        outline: none;
+        border: none;
+        font-family: var(--font-style);
+        font-size: var(--base-size);
+       display: flex;
+       gap: 0.5rem;
+       align-items: center;
+
+    }
+
+    
+
+    .replay-paragraph {
+        border: 1px solid var(--black);
+        background-color: transparent;
+        border-radius: 12px;
+        padding: 1rem;
+    }
+
+    .you {
+        background-color: var(--Moderateblue);
+        padding: 0.2rem;
+        text-align: center;
+        border: none;
+        border-radius: 5px;
+        color: var(--White);
+    }
 }
     
 

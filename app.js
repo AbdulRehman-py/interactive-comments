@@ -31,9 +31,15 @@ getdata().then(data => {
      
       renderComments(comments);
 
+      reply_template();
+
       add_section();
-     
+
+      reply();
+
         add_minus();
+
+        
     }
    
     
@@ -119,7 +125,44 @@ function renderComments(comments) {
 
     function reply_template() {
         const reply_section = reply_templates_section.content.cloneNode(true).firstElementChild;
-        
-    }
-   
+        const [img_src, reply_name ,  time ] = reply_section.querySelectorAll('.reply-img, .heading-2  , .time-reply');
+        const you_tag = reply_section.querySelector('.you');
+        const [reply_paragraph,reply_name_tag] = reply_section.querySelectorAll('.reply-paragraph, .reply-name');
+        if (img_src && reply_name && you_tag && time) {
+            img_src.src = 'images/avatars/img.jpg';
+            reply_name.textContent = 'cobra kai';
+            you_tag.textContent = 'You';
+            time.textContent = "1 hour ago";
+            reply_paragraph.textContent = 'I am a big fan of cobra kai i just finished watching the season 6 and i am so excited for the final part of season 6 im wondering who will win im expeecting a twist';
+            
+          }
 
+        unorder_list.appendChild(reply_section);
+    }
+
+
+    function reply() {
+        const reply_button  = unorder_list.querySelectorAll('.button-reply');
+        const names_reply =  unorder_list.querySelectorAll('.heading');
+        let type_area = unorder_list.querySelector('.text');
+       
+        reply_button.forEach((replies, index)=> {
+            replies.addEventListener('click', () => {
+            const get_name = names_reply[index].textContent;
+            type_area.value = `@${get_name} `; // Use .value for textareas
+             
+
+            });
+        });
+    }
+    
+
+    function send_message () {
+        const send_button = unorder_list.querySelector('.send');
+        const type_area = unorder_list.querySelector('.text');
+        const reply_section = reply_templates_section.content.cloneNode(true).firstElementChild;
+        const [img_src, reply_name ,  time ] = reply_section.querySelectorAll('.reply-img, .heading-2  , .time-reply');
+    }
+
+
+    

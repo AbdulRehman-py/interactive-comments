@@ -35,7 +35,7 @@
     <form action="#" method="post" class="comment-form">
       <textarea class="text" name="comment" placeholder="What's happening?" required></textarea>
     </form>
-    <button type="submit" class="add-button">Send</button>
+    <button type="submit" class="send">Send</button>
   </div>
   </template>
 
@@ -43,22 +43,26 @@
   <template id="reply-template">
     <li id="replay-id">
       <div class="reply">
-        <img src="images/avatars/image-juliusomo.png" alt="img for user">
-        <h1 class="heading"><span class="you">you</span></h1>
-        <time class="time"></time>
+        <div class="top-flex-name">
+        <img class="reply-img" src="images/avatars/image-juliusomo.png" alt="img for user">
+        <h1 class="heading-2"></h1>
+        <span class="you">you</span>
+        <time class="time-reply"></time>
+        <div class="buttons">
         <button class="delete-button">
           <img src="images/icon-delete.svg" alt="delete icon"> Delete
       </button>
       <button class="edit">
-        <img src="images/icon-edit.svg" alt="icon for edit"> Edit
+        <img class="edit" src="images/icon-edit.svg" alt="icon for edit"> Edit
       </button>
+      </div>
+    </div>
         <p class="replay-paragraph"><span class="reply-name"></span></p>
         
       </div>
     </li>
   </template>
 
- 
 </head>
 <body>
   <main id="Interactive-comments-section">
