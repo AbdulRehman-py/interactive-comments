@@ -67,6 +67,8 @@
         align-items: center;
     }
 
+  
+
     .button-reply {
         margin-left: auto;
     }
@@ -166,12 +168,16 @@
         border-radius: 12px;
         margin: 1rem 0 1rem 0;
         padding: 1rem 1rem 1.5rem 1rem;
+        display: flex;
+        gap: 0.3rem;
     
    }
 
     .heading-2 {
         color: black;
-        font-size: var(--base-size);
+        font-size: var(--h1-size);
+        font-family: var(--font-style);
+        font-weight: 500;
     }
 
     .top-flex-name {
@@ -182,9 +188,10 @@
    
     .reply-img {
         max-width: 100%;
-        width: 5%;
-        height: 50%;
-        border-radius: 70%;
+        width: 9%;
+        height: 70%;
+        border-radius: 50%;
+        object-fit: cover;
     }
 
     .buttons {
@@ -208,7 +215,7 @@
     
 
     .replay-paragraph {
-        border: 1px solid var(--black);
+        margin: 0;
         background-color: transparent;
         border-radius: 12px;
         padding: 1rem;
@@ -222,7 +229,27 @@
         border-radius: 5px;
         color: var(--White);
     }
+
+    .reply {
+        display: flex;
+        flex-direction: column;
+    }
+
+   .curser, .button-reply {
+         cursor: pointer;
+   }
+
+   .minus, .plus {
+    cursor: pointer;
+   }
+
+   .send {
+       cursor: pointer;
+   }
+  
 }
     
+
+   
 
    

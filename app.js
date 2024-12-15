@@ -28,17 +28,18 @@ getdata().then(data => {
       // Log the data after it has been fetched
       console.log('Fetched comments:', comments);
       console.log('Fetched currentUser:', currentUser);
+
      
-      renderComments(comments);
+    renderComments(comments);
+    add_section();
+    reply();
+    send_message();
+    add_minus(); // Attach event listeners initially
+    edit_comment(); // Attach event listeners initially
+    deletereply(); // Attach event listeners initially
+  
 
-      reply_template();
-
-      add_section();
-
-      reply();
-
-        add_minus();
-
+      
         
     }
    
@@ -88,7 +89,9 @@ function renderComments(comments) {
               }
         });
     }
-    
+    add_minus(); // Attach event listeners after rendering comments
+    edit_comment(); // Attach event listeners after rendering comments
+    deletereply(); // Attach event listeners after rendering comments
     }
   
     // adding the section to the comment section
@@ -99,47 +102,36 @@ function renderComments(comments) {
     }
 
 
-
     function add_minus() {
-       const list_plus =  unorder_list.querySelectorAll('.plus');
-       const list_minus = unorder_list.querySelectorAll('.minus');
-       const numbers_num =  unorder_list.querySelectorAll('.vote-counting-number');
+        const list_plus = unorder_list.querySelectorAll('.plus:not(.bound)');
+        const list_minus = unorder_list.querySelectorAll('.minus:not(.bound)');
+    
+        list_plus.forEach((plus) => {
+          plus.classList.add('bound');
+          plus.addEventListener('click', () => {
+            const numberElement = plus.closest('li').querySelector('.vote-counting-number');
+            if (numberElement.textContent.trim() === '' || numberElement.textContent === '0') {
+              numberElement.textContent = '1';
+            } else {
+              numberElement.textContent = parseInt(numberElement.textContent) + 1;
+            }
+          });
+        });
+      
+        list_minus.forEach((minus) => {
+          minus.classList.add('bound');
+          minus.addEventListener('click', () => {
+            const numberElement = minus.closest('li').querySelector('.vote-counting-number');
+            if (numberElement.textContent.trim() === '' || numberElement.textContent === '0') {
+              // do nothing
+            } else {
+              numberElement.textContent = parseInt(numberElement.textContent) - 1;
+            }
+          });
+        });
+      }
 
-        if (list_plus) {
-            list_plus.forEach((plus, index) => {
-                plus.addEventListener('click', () => {
-                    numbers_num[index].textContent = parseInt(numbers_num[index].textContent) + 1;
-                });
-            });
-        } 
-
-        if (list_minus) {
-            list_minus.forEach((minus, index) => {
-                minus.addEventListener('click', () => {
-                    numbers_num[index].textContent = parseInt(numbers_num[index].textContent) - 1;
-                });
-            });
-        }
-
-    }
-
-    function reply_template() {
-        const reply_section = reply_templates_section.content.cloneNode(true).firstElementChild;
-        const [img_src, reply_name ,  time ] = reply_section.querySelectorAll('.reply-img, .heading-2  , .time-reply');
-        const you_tag = reply_section.querySelector('.you');
-        const [reply_paragraph,reply_name_tag] = reply_section.querySelectorAll('.reply-paragraph, .reply-name');
-        if (img_src && reply_name && you_tag && time) {
-            img_src.src = 'images/avatars/img.jpg';
-            reply_name.textContent = 'cobra kai';
-            you_tag.textContent = 'You';
-            time.textContent = "1 hour ago";
-            reply_paragraph.textContent = 'I am a big fan of cobra kai i just finished watching the season 6 and i am so excited for the final part of season 6 im wondering who will win im expeecting a twist';
-            
-          }
-
-        unorder_list.appendChild(reply_section);
-    }
-
+   
 
     function reply() {
         const reply_button  = unorder_list.querySelectorAll('.button-reply');
@@ -158,11 +150,93 @@ function renderComments(comments) {
     
 
     function send_message () {
+     
         const send_button = unorder_list.querySelector('.send');
+        const divElement = unorder_list.querySelector('.add-section');
+        send_button.addEventListener('click', () => {
+
+        
         const type_area = unorder_list.querySelector('.text');
         const reply_section = reply_templates_section.content.cloneNode(true).firstElementChild;
-        const [img_src, reply_name ,  time ] = reply_section.querySelectorAll('.reply-img, .heading-2  , .time-reply');
+        const [img_src, reply_name ,  time, paragraph_text ] = reply_section.querySelectorAll('.reply-img, .heading-2  , .time-reply, .replay-paragraph');
+
+            if (img_src && reply_name && time) {
+                img_src.src = 'images/avatars/img.jpg';
+                reply_name.textContent = 'cobra kai';
+                time.textContent = "1 hour ago";
+                paragraph_text.textContent = type_area.value;
+                
+              }
+
+              type_area.value = '';
+
+             edit_comment();
+             
+
+              unorder_list.insertBefore(reply_section, divElement);
+
+              
+              add_minus(); // Attach event listeners to newly added elements
+              deletereply(); // Attach event listeners to newly added elements
+              edit_comment(); // Attach event listeners to newly added elements
+               
+        });
+
     }
 
+function deletereply() {
+    const delete_button = unorder_list.querySelectorAll('.delete-button');
+    const reply_section = unorder_list.querySelectorAll('#reply-id');
 
+    delete_button.forEach((deletes) => {
+        deletes.addEventListener('click', () => {
+            const reply_section = deletes.closest('li');
+            if (reply_section) {
+                reply_section.remove();
+            } else {
+                console.error('Could not find the parent element');
+            }
+           
+        });
+    });
+}
+
+function edit_comment() {
+    const edit_buttons = unorder_list.querySelectorAll('.edit');
     
+    edit_buttons.forEach(edit_button => {
+      // Store the original content of the edit button
+      const originalContent = edit_button.innerHTML;
+  
+      edit_button.addEventListener('click', () => {
+        const reply_section = edit_button.closest('li');
+        if (!reply_section) {
+          console.error('Could not find the parent li element');
+          return;
+        }
+  
+        const paragraph_edit = reply_section.querySelector('.replay-paragraph'); // Corrected class name
+        if (!paragraph_edit) {
+          console.error('Could not find the replay-paragraph element');
+          return;
+        }
+        
+        // Check if the button is in "Save" state
+        if (edit_button.textContent.trim() === 'Save') {
+          // Save the changes
+          paragraph_edit.setAttribute('contenteditable', 'false');
+          paragraph_edit.style.border = 'none';
+          edit_button.innerHTML = originalContent;
+        } else {
+          // Change the edit button text to "Save"
+          edit_button.textContent = 'Save';
+          
+          paragraph_edit.setAttribute('contenteditable', 'true');
+          paragraph_edit.focus();
+          paragraph_edit.style.border = '1px solid black';
+        }
+      });
+    });
+  }
+  
+
