@@ -253,7 +253,59 @@
     
 
 @layer responsivesesign {
+    @media (max-width: 1150px) {
+        .text {
+            width: 130%;
+        }
+    }
+}
+
+@media (max-width: 910px) {
+    .text {
+        width: 100%;
+    }
+
+    .reply-img {
+        width: 10%;
+    }
+
+    #unorder-list {
+        width: 80%;
+    }
 
 }
 
+@media (max-width: 700px) {
    
+    .reply-img {
+        width: 12%;
+    }
+
+    #unorder-list {
+        width: 90%;
+    }
+}
+   
+
+@media (max-width: 650px) {
+    .reply-img {
+        width: 14%;
+    }
+
+    .heading-2 {
+        font-size: 1.1rem;
+    }
+
+    .heading {
+        font-size: 1.1rem;
+    }
+
+}
+
+@media (max-width: 570px) {
+  
+  #unorder-list {
+      width: 100%;
+  }
+
+}
