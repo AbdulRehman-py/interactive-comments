@@ -280,33 +280,3 @@ function attachEventListeners() {
 }
 
 
-document.addEventListener('DOMContentLoaded', async () => {
-  try {
-      const hasInitialized = localStorage.getItem('hasInitialized');
-      
-      if (!hasInitialized) {
-          // First time loading
-          const data = await getdata();
-          if (data) {
-              renderComments(data.comments);
-              add_section();
-              localStorage.setItem('hasInitialized', 'true');
-              saveDOMState();
-          }
-      } else {
-          // Loading saved state
-          if (!loadDOMState()) {
-              // If loading saved state fails, load from data.json
-              const data = await getdata();
-              if (data) {
-                  renderComments(data.comments);
-                  add_section();
-                  saveDOMState();
-              }
-          }
-      }
-      attachEventListeners();
-  } catch (error) {
-      console.error('Error initializing app:', error);
-  }
-});

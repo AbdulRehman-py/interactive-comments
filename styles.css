@@ -246,10 +246,14 @@
    .send {
        cursor: pointer;
    }
+
+
   
 }
     
 
-   
+@layer responsivesesign {
+
+}
 
    
