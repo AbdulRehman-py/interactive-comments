@@ -307,5 +307,119 @@
   #unorder-list {
       width: 100%;
   }
+}
 
+  @media (max-width: 470px) {
+    #comment {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .comment-detail-container {
+        grid-column: 1/3;
+        
+    }
+
+    .upvote-downvote {
+        grid-column: 1;
+        grid-row: 2;
+        display: flex;
+        flex-direction: row;
+        margin: 0;
+        align-items: left;
+        justify-content: left;
+    }
+
+    .add-section {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+
+    }
+
+    .reply-img {
+        grid-column: 1/2;
+        grid-row: 2;
+        margin: 0;
+        padding: 0;
+        width: 20%;
+        object-fit: cover;
+        
+    }
+    .send {
+        grid-column: 2/3;
+        grid-row: 2;
+        margin-top: 1rem;
+    }
+
+    .comment-form {
+        grid-column: 1/3;
+        margin: 0;
+        padding: 0;
+    }
+    .text  {
+        padding: 1rem;
+        margin-left: 0;
+    }
+
+    
+  #replay-id {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+  } 
+
+  .upvote-downvote {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .reply {
+    grid-column: 1/3;
+    grid-row: 1;
+  }
+  .buttons {
+    display: flex;
+    flex-direction: column;
+  }
+
+ 
+  }
+
+
+
+
+
+@media (max-width: 370px) {
+   #replay-id {
+    padding: 0.8rem 0.8rem 0.8rem 0.8rem;
+  }
+
+  .heading-2 {
+    font-size: 0.9rem;
+  }
+
+  .button-reply {
+    margin-left: 0.4rem;
+  }
+
+.img {
+    width: 15%;
+    height: auto;
+}
+
+.heading {
+    font-size: 0.9rem;
+}
+
+.delete-button {
+    font-size: 0.8rem;
+}
+
+.edit {
+    font-size: 0.8rem;
+}
+
+.time-reply {
+    font-size: 0.7rem;
+}
 }
